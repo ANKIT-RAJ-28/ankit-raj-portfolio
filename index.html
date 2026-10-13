@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ankit Raj | AI Product Manager</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap');
+        
+        :root {
+            --bg-color: #121212;
+            --text-main: #f5f5f5;
+            --text-muted: #a0a0a0;
+            --accent: #ff6600;
+            --card-bg: #1e1e1e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(18, 18, 18, 0.95);
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .btn-contact {
+            border: 1px solid var(--text-main);
+            padding: 8px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            color: var(--text-main);
+            transition: all 0.3s;
+        }
+
+        .btn-contact:hover {
+            background: var(--text-main);
+            color: var(--bg-color);
+        }
+
+        /* Sections */
+        section {
+            min-height: 100vh;
+            padding: 100px 10vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin-bottom: 40px;
+        }
+
+        .accent-text {
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        #home {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .hero-right h1 {
+            font-size: 4.5rem;
+        }
+
+        /* Slider for Case Studies */
+        .slider-wrapper {
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .slider-container {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 30px;
+            padding-bottom: 30px;
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent) var(--card-bg);
+        }
+
+        .slider-container::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .slider-container::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 4px;
+        }
+
+        .case-study-card {
+            flex: 0 0 85%;
+            scroll-snap-align: center;
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 12px;
+            border-left: 5px solid var(--accent);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .case-study-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .tag-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .tag {
+            background: rgba(255, 102, 0, 0.1);
+            color: var(--accent);
+            padding: 5px 12px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .experience-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-top: 3px solid var(--accent);
+        }
+
+        .experience-card h4 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .experience-card span {
+            color: var(--accent);
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        ul {
+            list-style-position: inside;
+            color: var(--text-muted);
+            margin-top: 10px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+
+        /* Contact Section */
+        .contact-links a {
+            display: inline-block;
+            margin-right: 20px;
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 1.2rem;
+            border-bottom: 1px solid var(--accent);
+            padding-bottom: 5px;
+            transition: color 0.3s;
+        }
+
+        .contact-links a:hover {
+            color: var(--accent);
+        }
+
+        @media (max-width: 768px) {
+            #home {
+                grid-template-columns: 1fr;
+            }
+            .nav-links {
+                display: none;
+            }
+            .case-study-card {
+                flex: 0 0 95%;
+            }
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div style="font-weight: 900; letter-spacing: 2px;">ANKIT RAJ</div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#work">Case Studies</a>
+            <a href="#experience">Experience</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <a href="mailto:ankitraj.sbg@email.com" class="btn-contact">Email Me</a>
+    </nav>
+
+    <section id="home">
+        <div>
+            <p style="color: var(--accent); font-weight: 700; margin-bottom: 10px;">• GOOD EVENING</p>
+            <p style="letter-spacing: 3px; font-size: 0.9rem; margin-bottom: 20px;">AI PRODUCT MANAGER</p>
+            <h1 style="font-size: 5rem; margin-bottom: 20px;">ANKIT<br>RAJ</h1>
+            <p class="subtitle">Accomplished AI Product Manager with over 13 years of experience leading enterprise-level AI transformations, multi-agent orchestrations, and cross-functional product operations. Bridging the gap between strategic business priorities, generative AI architectures, and deterministic mathematical models.</p>
+        </div>
+        <div class="hero-right">
+            <p style="font-size: 0.9rem; letter-spacing: 2px; color: var(--text-muted);">AVAILABLE FOR AI PRODUCT ROLES</p>
+            <h1>BUILDING<br>SCALABLE<br>MEASURABLE<br>AI PLATFORMS<br><span class="accent-text">WITH IMPACT.</span></h1>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2>What I Bring To Your Team</h2>
+        <div class="grid-2">
+            <div class="experience-card">
+                <h4>Agentic AI & LLM Orchestration</h4>
+                <p class="subtitle" style="font-size: 1rem;">Expertise in multi-agent architectures using LangGraph, Claude 3.5, and AWS Bedrock. Proficient in transforming probabilistic ML models into deterministic enterprise solutions via RAG and strict CI/CD governance.</p>
+            </div>
+            <div class="experience-card">
+                <h4>Operational Research & Mathematics</h4>
+                <p class="subtitle" style="font-size: 1rem;">Fusing Generative AI with deterministic Mixed-Integer Programming (MIP), Dimensionality Reduction (UMAP), and Density Clustering (HDBSCAN) to solve extreme combinatorial complexities.</p>
+            </div>
+            <div class="experience-card">
+                <h4>Measurable Business Impact</h4>
+                <p class="subtitle" style="font-size: 1rem;">Track record of driving structural cost reductions (up to 4.5% on €1B+ logistics spend) and neutralizing massive enterprise liabilities ($180M+ warranty exposure) through algorithmic optimization.</p>
+            </div>
+            <div class="experience-card">
+                <h4>Technical & Analytical Fluency</h4>
+                <p class="subtitle" style="font-size: 1rem;">Bridging the gap between engineering and executives. Deep fluency in Databricks (Unity Catalog, Delta Lake), Palantir Foundry, Snowflake, Apache Airflow, Python, and SQL.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="work">
+        <h2>Product Teardown (Case Studies)</h2>
+        <p class="subtitle">Swipe horizontally to explore how ideas turn into enterprise AI products — from Problem to Execution to Impact.</p>
+        
+        <div class="slider-wrapper">
+            <div class="slider-container">
+                
+                <!-- Case Study 1 -->
+                <div class="case-study-card">
+                    <h3>Optima Inbound Agents (Conversational AI & MIP Engine)</h3>
+                    <div class="tag-container">
+                        <span class="tag">LangGraph</span>
+                        <span class="tag">Mixed-Integer Programming</span>
+                        <span class="tag">Databricks</span>
+                    </div>
+                    <div class="grid-2">
+                        <div>
+                            <p style="color: var(--accent); font-weight: 700; margin-bottom: 5px;">PROBLEM</p>
+                            <p style="font-size: 0.95rem; color: var(--text-muted);">An 8-week legacy logistics planning cycle forced a €1 billion transport network to run on stale data and manual spreadsheets, leading to massive capital bleed via deadhead miles and underutilized assets.</p>
+                            
+                            <p style="color: var(--accent); font-weight: 700; margin-top: 15px; margin-bottom: 5px;">PRODUCT THINKING</p>
+                            <p style="font-size: 0.95rem; color: var(--text-muted);">Democratize operational research. Do not let LLMs perform raw math. Use a deterministic MIP solver to calculate optimal routes, and deploy a multi-agent Generative AI orchestrator as a cognitive read-engine over the results.</p>
+                        </div>
+                        <div>
+                            <p style="color: var(--accent); font-weight: 700; margin-bottom: 5px;">EXECUTION</p>
+                            <p style="font-size: 0.95rem; color: var(--text-muted);">Deployed a LangGraph Supervisor routing natural language to specialized ReAct sub-agents. Enforced strict Token Budgets per Turn (bounded 50-row sampling) and a Zero-Trust SP-Only identity model to maintain sub-second latency.</p>
+                            
+                            <p style="color: var(--accent); font-weight: 700; margin-top: 15px; margin-bottom: 5px;">IMPACT</p>
+                            <ul style="font-size: 0.95rem;">
+                                <li>Collapsed the 8-week manual cycle to a daily automated run.</li>
+                                <li>Targeting 4.5% structural cost reduction on €1B+ inbound spend.</li>
+                                <li>Eradicated the "SQL Gatekeeper" delay, dropping query response times to ~30 seconds at €0.15 per conversational turn.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case Study 2 -->
+                <div class="case-study-card">
+                    <h3>Warranty Claims Clustering (WCC) Intelligence Engine</h3>
+                    <div class="tag-container">
+                        <span class="tag">Claude 3.5 Sonnet</span>
+                        <span class="tag">HDBSCAN / UMAP</span>
+                        <span class="tag">Palantir Foundry</span>
+                    </div>
+                    <div class="grid-2">
+                        <div>
+                            <p style="color: var(--accent); font-weight: 700; margin-bottom: 5px;">PROBLEM</p>
+                            <p style="font-size: 0.95rem; color: var(--text-muted);">17,300+ unclassified multi-lingual warranty claims daily completely overwhelmed analysts. Brittle regex rules led to a 90-120 day defect detection lag, compounding into a $180M+ annual liability.</p>
+                            
+                            <p style="color: var(--accent); font-weight: 700; margin-top: 15px; margin-bottom: 5px;">PRODUCT THINKING</p>
+                            <p style="font-size: 0.95rem; color: var(--text-muted);">Replace rigid taxonomies with unsupervised density clustering. Solve 'symptom conflation' by decoupling hardware extraction (OEM part numbers) from defect severity (safety-critical tiers).</p>
+                        </div>
+                        <div>
+                            <p style="color: var(--accent); font-weight: 700; margin-bottom: 5px;">EXECUTION</p>
+                            <p style="font-size: 0.95rem; color: var(--text-muted);">Architected a Two-Agent pipeline (Component Specialist + Defect Specialist). Translated outputs into 384-dimensional dense vectors, compressed via UMAP, and clustered using Two-Level HDBSCAN inside Databricks.</p>
+                            
+                            <p style="color: var(--accent); font-weight: 700; margin-top: 15px; margin-bottom: 5px;">IMPACT</p>
+                            <ul style="font-size: 0.95rem;">
+                                <li>Slashed defect detection cycle time from 90 days to under 48 hours.</li>
+                                <li>Enabled immediate Tier-1 supplier chargebacks, yielding $4.5M - $8.2M in annual savings.</li>
+                                <li>Achieved >400x ROI with an optimized cloud compute OPEX of ~$957/month.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case Study 3 -->
+                <div class="case-study-card">
+                    <h3>Clinical Orderset Automation MVP</h3>
+                    <div class="tag-container">
+                        <span class="tag">RAG Pipeline</span>
+                        <span class="tag">Parallel AI Processing</span>
+                        <span class="tag">Clinical Governance</span>
+                    </div>
+                    <div class="grid-2">
+                        <div>
+                            <p style="color: var(--accent); font-weight: 700; margin-bottom: 5px;">PROBLEM</p>
+                            <p style="font-size: 0.95rem; color: var(--text-muted);">Manually transcribing complex 500-page clinical trial protocol PDFs into structured EHR ordersets took days, burdening medical staff and carrying massive liability risks due to human data-entry errors.</p>
+                            
+                            <p style="color: var(--accent); font-weight: 700; margin-top: 15px; margin-bottom: 5px;">PRODUCT THINKING</p>
+                            <p style="font-size: 0.95rem; color: var(--text-muted);">Controlled automation. The AI acts exclusively as a drafting and flagging assistant, not an autonomous decider. Couple probabilistic LLM extraction with rigid, deterministic Python schema validation.</p>
+                        </div>
+                        <div>
+                            <p style="color: var(--accent); font-weight: 700; margin-bottom: 5px;">EXECUTION</p>
+                            <p style="font-size: 0.95rem; color: var(--text-muted);">Built a Hub-and-Spoke Agent Orchestrator initiating 7-way parallel LLM extraction calls to slash latency. Implemented RAG to ground every extracted row to an exact PDF source snippet and page number.</p>
+                            
+                            <p style="color: var(--accent); font-weight: 700; margin-top: 15px; margin-bottom: 5px;">IMPACT</p>
+                            <ul style="font-size: 0.95rem;">
+                                <li>Reduced pure AI processing time from 140s to ~20s; end-to-end processing under 5 minutes.</li>
+                                <li>Achieved 100% safety gate effectiveness with zero critical failures bypassing review.</li>
+                                <li>Slashed clinician review time by ≥50% using split-screen validation UI.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case Study 4 -->
+                <div class="case-study-card">
+                    <h3>Yield Curve Cleansing (YCC) AI Platform</h3>
+                    <div class="tag-container">
+                        <span class="tag">Exception Management</span>
+                        <span class="tag">SOC Compliance</span>
+                        <span class="tag">Financial Ops</span>
+                    </div>
+                    <div class="grid-2">
+                        <div>
+                            <p style="color: var(--accent); font-weight: 700; margin-bottom: 5px;">PROBLEM</p>
+                            <p style="font-size: 0.95rem; color: var(--text-muted);">Valuations required cleansing 180+ multi-vendor yield curves under strict hourly deadlines (1 PM - 5 PM). Legacy macro tools caused severe latency, knowledge silos, and lacked audit trails.</p>
+                            
+                            <p style="color: var(--accent); font-weight: 700; margin-top: 15px; margin-bottom: 5px;">PRODUCT THINKING</p>
+                            <p style="font-size: 0.95rem; color: var(--text-muted);">Reject full-automation; maintain human-in-the-loop for asymmetric market intelligence. Let an AI rules engine absorb the healthy 85% of volume, focusing the human exclusively on the 15% volatile anomalies.</p>
+                        </div>
+                        <div>
+                            <p style="color: var(--accent); font-weight: 700; margin-bottom: 5px;">EXECUTION</p>
+                            <p style="font-size: 0.95rem; color: var(--text-muted);">Deployed a multi-agent framework: an Ingestion Gateway for normalization, an Anomaly & Drift agent to flag exceptions, and a RAG-based LLM Reason-Drafter to suggest override justifications from historical data.</p>
+                            
+                            <p style="color: var(--accent); font-weight: 700; margin-top: 15px; margin-bottom: 5px;">IMPACT</p>
+                            <ul style="font-size: 0.95rem;">
+                                <li>100% decommissioned the legacy macro tool across global trading desks.</li>
+                                <li>Enabled 10 analysts to effortlessly clear 180+ curves in minutes without SLA breaches.</li>
+                                <li>Established an immutable, SOC-compliant 4-eyes sign-off process for vendor overrides.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <h2>Work Experience</h2>
+        
+        <div class="experience-card">
+            <h4>AI Product Manager <span>@ Stellantis</span></h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 10px;">August 2023 - Present</p>
+            <ul>
+                <li>Directed the Optima Inbound Agents platform, managing a €1B inbound transport spend and driving a 4.5% structural cost reduction via LangGraph and MIP solvers.</li>
+                <li>Spearheaded the Warranty Claims Clustering (WCC) Engine using Claude 3.5 and HDBSCAN, compressing defect discovery from 90 days to 48 hours and averting up to $8.2M in liabilities.</li>
+                <li>Engineered zero-trust enterprise security pipelines bypassing row-level token delegation for sub-second Databricks SQL execution.</li>
+            </ul>
+        </div>
+
+        <div class="experience-card">
+            <h4>Product Manager <span>@ L&T (Larsen & Toubro)</span></h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 10px;">May 2022 - August 2023</p>
+            <ul>
+                <li>Architected the Clinical Orderset Automation MVP, utilizing 7-way parallel LLM extraction to convert 500-page trial PDFs into EHR datasets in under 5 minutes.</li>
+                <li>Designed the Yield Curve Cleansing (YCC) AI Platform to automate OTC valuation anomaly detection, establishing SOC-compliant AI reasoning pipelines.</li>
+            </ul>
+        </div>
+
+        <div class="experience-card">
+            <h4>Senior Analytics Consultant <span>@ NextGenVision Technology</span></h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 10px;">October 2017 - April 2022</p>
+            <ul>
+                <li>Led data modeling and revenue optimization dashboards for Takeda Pharmaceutical leveraging Snowflake schema architectures and Power BI.</li>
+            </ul>
+        </div>
+
+        <div class="experience-card">
+            <h4>Software Engineer Analyst <span>@ Accenture</span></h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 10px;">May 2012 - December 2014</p>
+            <ul>
+                <li>Resolved critical business issues for Barclays Cards and optimized production systems using TWS and Control M schedulers.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Beyond Work & Contact</h2>
+        <div class="grid-2">
+            <div>
+                <p style="color: var(--accent); font-weight: 700; margin-bottom: 10px;">CERTIFICATIONS</p>
+                <ul style="list-style: none; padding: 0;">
+                    <li><a href="https://www.linkedin.com/in/ankit-raj-5a5387287/details/certifications/" target="_blank" style="color: var(--text-main);">LinkedIn Certification Overview ↗</a></li>
+                    <li><a href="https://coursera.org/share/6842958da7a119795c09518b649cad7e" target="_blank" style="color: var(--text-main);">Coursera Certification 1 ↗</a></li>
+                    <li><a href="https://coursera.org/share/5ba7c0881ba4b252669c0ef9bd4a62cf" target="_blank" style="color: var(--text-main);">Coursera Certification 2 ↗</a></li>
+                    <li><a href="https://coursera.org/share/7473e5e2522f9c902aee40c59c8dfdbd" target="_blank" style="color: var(--text-main);">Coursera Certification 3 ↗</a></li>
+                </ul>
+            </div>
+            <div>
+                <p style="color: var(--accent); font-weight: 700; margin-bottom: 10px;">LET'S CONNECT</p>
+                <div class="contact-links">
+                    <a href="mailto:ankitraj.sbg@email.com">Email Me</a>
+                    <a href="https://www.linkedin.com/in/ankit-raj-5a5387287/" target="_blank">LinkedIn</a>
+                    <a href="tel:+919643167661">+91 9643167661</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
